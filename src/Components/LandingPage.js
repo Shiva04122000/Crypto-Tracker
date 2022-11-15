@@ -3,6 +3,7 @@ import "./LandingPage.css"
 import { motion } from "framer-motion";
 import gradient from "../assets/gradient.png"
 import iphone from "../assets/iphone.png"
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
     return (
@@ -17,7 +18,7 @@ const LandingPage = () => {
                     initial={{ y: 100, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     transition={{ duration: 1 }}
-                >Real time <span style={{ fontFamily: "auto" }}>.</span></motion.h1>
+                >Real Time <span style={{ fontFamily: "auto" }}>.</span></motion.h1>
                 <motion.p className='para'
                     initial={{ y: 100, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -28,8 +29,8 @@ const LandingPage = () => {
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1 ,delay:0.75}}
                 >
-                    <button className='landing-btn'>Dashboard</button>
-                    <button className='landing-btn share'>Share</button>
+                <Link className='landing-btn' to="/dashboard">Dashboard</Link>
+                <Link className='landing-btn share' to="">Share</Link>
                 </motion.div>
             </div>
             <div className="phone-box">
