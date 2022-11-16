@@ -4,6 +4,7 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Grid from "./Grid";
+import List from "./List";
 import { createTheme, ThemeProvider } from "@mui/material";
 // import Grid from "../GridComponent/Grid";
 // import "./styles.css";
@@ -43,13 +44,19 @@ export default function Tabs({ data }) {
                         </TabList>
                     </div>
                     <TabPanel value="grid">
-                    <div className="grid-flex">
-                        {data.map((item,i)=>(
-                            <Grid coin={item} />
-                        ))}
-                    </div>
+                        <div className="grid-flex">
+                            {data.map((item, i) => (
+                                <Grid coin={item} key={i} delay={(i%5)*0.1} />
+                            ))}
+                        </div>
                     </TabPanel>
-                    <TabPanel value="list"> this is list view</TabPanel>
+                    <TabPanel style={{padding:"13px"}} value="list">
+                        <div className="list-flex">
+                            {data.map((item, i) => (
+                                <List coin={item}  delay={(i%7)*0.1}/>
+                            ))}
+                        </div>
+                    </TabPanel>
                 </TabContext>
             </ThemeProvider>
         </div>
