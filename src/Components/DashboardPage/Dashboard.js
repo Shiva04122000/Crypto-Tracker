@@ -6,12 +6,25 @@ import Tabs from './Tabs';
 import Header from '../Header';
 import Search from "./Search.js"
 import Loading from './Loading';
+import PaginationComponent from './Pagination';
+// import { Pagination } from '@mui/material';
 
 const Dashboard = () => {
 
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageCoins, setPageCoins] = useState([]);
+
+  var filteredCoins = data.filter((item) => {
+    if (
+      item.symbol.toLowerCase().includes(search.toLowerCase()) ||
+      item.name.toLowerCase().includes(search.toLowerCase())
+    ) {
+      return item;
+    }
+  });
 
   useEffect(() => {
     axios.get(DASHBOARD_API_URL).then((response) => {
@@ -46,6 +59,12 @@ const Dashboard = () => {
     scrollFunction();
   };
 
+  const handleChange = (event, value) => {
+    setPageNumber(value);
+    setPageCoins(data.slice((value - 1) * 10, (value - 1) * 10 + 10));
+  };
+
+
   function scrollFunction() {
     if (
       document.body.scrollTop > 20 ||
@@ -61,26 +80,21 @@ const Dashboard = () => {
     <>
 
       <Header />
-      {/* <Search search={search} setSearch={setSearch} />
-      <Tabs data={filteredCoins} />
-      <div onClick={() => topFunction()} id="myBtn" className="top-btn">
-        <ArrowUpwardIcon sx={{ color: "var(--blue)" }} />
-      </div> */}
       {loading ? (
         <Loading />
       ) : (
         <>
           <Search search={search} setSearch={setSearch} />
-          <Tabs data={filteredCoins} />
+          <Tabs data={search ? filteredCoins : pageCoins} />
           <div onClick={() => topFunction()} id="myBtn" className="top-btn">
             <ArrowUpwardIcon sx={{ color: "var(--blue)" }} />
           </div>
-          {/* {!search && (
+          {!search && (
             <PaginationComponent
               pageNumber={pageNumber}
               handleChange={handleChange}
             />
-          )} */}
+          )}
         </>
       )}
     </>
