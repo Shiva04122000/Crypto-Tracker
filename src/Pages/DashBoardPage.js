@@ -2,6 +2,7 @@ import React from 'react'
 import Dashboard from '../Components/DashboardPage/Dashboard';
 
 const DashBoardPage = () => {
+  
   return (
     <div>
       <Dashboard/>

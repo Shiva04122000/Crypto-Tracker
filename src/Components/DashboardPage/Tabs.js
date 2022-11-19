@@ -34,7 +34,7 @@ export default function Tabs({ data }) {
     });
 
     return (
-        <div style={{ marginTop: "8rem" }}>
+        <div style={{ marginTop: "3rem" }}>
             <ThemeProvider theme={theme}>
                 <TabContext value={value} sx={{ color: "var(--white" }}>
                     <div style={{ borderBottom: 1, borderColor: "divider" }}>
