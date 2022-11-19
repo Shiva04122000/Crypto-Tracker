@@ -4,11 +4,11 @@ import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 
 const Grid = ({ coin }) => {
-    return (
-        <div
-        className={`grid-box ${
-          coin.price_change_percentage_24h < 0 && "grid-box-red"
-        }`}
+  return (
+    <a href={`/coin/${coin.id}`}>
+      <div
+        className={`grid-box ${coin.price_change_percentage_24h < 0 && "grid-box-red"
+          }`}
       >
         <div className="info-flex">
           <img src={coin.image} className="coin-logo" />
@@ -32,7 +32,7 @@ const Grid = ({ coin }) => {
             <TrendingDownRoundedIcon className="icon chip-red" />
           </div>
         )}
-  
+
         <p
           className="coin-price"
           style={{
@@ -54,7 +54,8 @@ const Grid = ({ coin }) => {
           </p>
         </div>
       </div>
-    )
+    </a>
+  )
 }
 
 export default Grid

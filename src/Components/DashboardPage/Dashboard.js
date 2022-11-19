@@ -7,7 +7,6 @@ import Header from '../Header';
 import Search from "./Search.js"
 import Loading from './Loading';
 import PaginationComponent from './Pagination';
-// import { Pagination } from '@mui/material';
 
 const Dashboard = () => {
 
@@ -27,26 +26,18 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
-    axios.get(DASHBOARD_API_URL).then((response) => {
-      if (response.status == 200) {
-        console.log(response.data)
-        setData(response.data)
+    axios
+      .get(DASHBOARD_API_URL)
+      .then((response) => {
+        console.log("Response Data >>>", response.data);
+        setData(response.data);
         setLoading(false);
-      } else {
-        alert("Data not found")
-      }
-    })
+        setPageCoins(response.data.slice(0, 10));
+      })
+      .catch((error) => {
+        console.log("Error>>>", error);
+      });
   }, []);
-  console.log(data)
-
-  var filteredCoins = data.filter((item) => {
-    if (
-      item.symbol.toLowerCase().includes(search.toLowerCase()) ||
-      item.name.toLowerCase().includes(search.toLowerCase())
-    ) {
-      return item;
-    }
-  });
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -59,12 +50,6 @@ const Dashboard = () => {
     scrollFunction();
   };
 
-  const handleChange = (event, value) => {
-    setPageNumber(value);
-    setPageCoins(data.slice((value - 1) * 10, (value - 1) * 10 + 10));
-  };
-
-
   function scrollFunction() {
     if (
       document.body.scrollTop > 20 ||
@@ -76,9 +61,13 @@ const Dashboard = () => {
     }
   }
 
-  return (
-    <>
+  const handleChange = (event, value) => {
+    setPageNumber(value);
+    setPageCoins(data.slice((value - 1) * 10, (value - 1) * 10 + 10));
+  };
 
+  return (
+    <div>
       <Header />
       {loading ? (
         <Loading />
@@ -97,8 +86,8 @@ const Dashboard = () => {
           )}
         </>
       )}
-    </>
-  )
+    </div>
+  );
 }
 
 export default Dashboard
