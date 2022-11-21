@@ -48,3 +48,23 @@ img {
   -moz-user-drag: none;
   -o-user-drag: none;
 }
+
+.grey-container {
+  /* font-size: 1.2rem; */
+  width: 90%;
+  display: block;
+  background-color: var(--darkgrey);
+  margin: 0.5rem auto;
+  padding: 1rem;
+  border-radius: 0.8rem;
+}
+
+@media only screen and (max-width: 800px) {
+  
+  .grey-container {
+    background-color: var(--darkgrey);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.8rem;
+  }
+
+}
