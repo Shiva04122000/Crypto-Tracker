@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashBoardPage from './Pages/DashBoardPage';
 import Home from './Pages/Home';
 import CoinPage from './Pages/Coin';
+import axios from 'axios';
+import { useEffect, useState } from 'react'
 
 function App() {
   return (
@@ -15,7 +17,6 @@ function App() {
           <Route path="/coin/:id" element={<CoinPage />} />
         </Routes>
       </BrowserRouter>
-
     </div>
   );
 }
