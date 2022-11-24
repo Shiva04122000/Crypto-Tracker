@@ -50,7 +50,6 @@ img {
 }
 
 .grey-container {
-  /* font-size: 1.2rem; */
   width: 90%;
   display: block;
   background-color: var(--darkgrey);
@@ -59,12 +58,37 @@ img {
   border-radius: 0.8rem;
 }
 
+.div-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  /* margin: 1rem 3rem; */
+  margin: 8rem 4rem 1rem 4rem;
+
+}
+
 @media only screen and (max-width: 800px) {
-  
   .grey-container {
     background-color: var(--darkgrey);
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 0.8rem;
   }
 
+  .div-flex {
+    gap: 0.5rem;
+    margin: 5rem 2rem 1rem 2rem;
+    justify-content: space-between;
+  }
+
+  .crypto-heading {
+    display: none;
+  }
+
+  .select-coin {
+    max-width: 120px !important;
+    font-size: 0.8rem !important;
+    padding: 0rem !important;
+    height: 35px !important;
+  }
 }
