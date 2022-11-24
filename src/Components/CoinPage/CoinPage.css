@@ -23,6 +23,9 @@
   justify-content: center;
   margin: 1rem;
 }
+.line-chart{
+  width: 350px;
+}
 
 @media only screen and (max-width: 800px) {
   .toggle-div {
