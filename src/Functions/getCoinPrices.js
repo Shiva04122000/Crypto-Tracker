@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const getCoinPrices = (id, days) => {
+const getCoinPrices = (id, days,priceType) => {
   console.log("Coin Prices")
   const data = axios
     .get(
@@ -9,7 +9,9 @@ const getCoinPrices = (id, days) => {
     )
     .then((response) => {
       // console.log("hii1" ,response.data)
-      return response.data.prices;
+      if (priceType == "prices") return response.data.prices;
+      else if (priceType == "market_caps") return response.data.market_caps;
+      else if (priceType == "total_volumes") return response.data.total_volumes;
     })
     .catch((error) => {
       console.log("Error>>>", error);

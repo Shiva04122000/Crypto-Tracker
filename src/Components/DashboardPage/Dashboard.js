@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { DASHBOARD_API_URL } from '../Constants';
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import Tabs from './Tabs';
-import Header from '../Header';
+import Header from '../Header/Header';
 import Search from "./Search.js"
 import Loading from './Loading';
 import PaginationComponent from './Pagination';
@@ -15,6 +14,8 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
   const [pageCoins, setPageCoins] = useState([]);
+
+  const DASHBOARD_API_URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
 
   var filteredCoins = data.filter((item) => {
     if (

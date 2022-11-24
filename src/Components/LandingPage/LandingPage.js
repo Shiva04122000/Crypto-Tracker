@@ -1,8 +1,8 @@
 import React from 'react'
 import "./LandingPage.css"
 import { motion } from "framer-motion";
-import gradient from "../assets/gradient.png"
-import iphone from "../assets/iphone.png"
+import gradient from '../../assets/gradient.png'
+import iphone from '../../assets/iphone.png'
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
