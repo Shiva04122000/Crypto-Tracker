@@ -132,6 +132,14 @@ const Header = () => {
           open={open}
           onClose={() => setOpen(false)}>
           <div className='drawer'>
+            
+            <Link><FormControlLabel
+              control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+              checked={!mode}
+              onClick={(e) => {
+                toggleTheme();
+              }}
+            /></Link>
             <Link to={'/'}>Home</Link>
             <Link to={'/compare'}>Compare</Link>
             <Link to={'/dashboard'}>Dashboard</Link>
