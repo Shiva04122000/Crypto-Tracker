@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import gradient from '../../assets/gradient.png'
 import iphone from '../../assets/iphone.png'
 import { Link } from 'react-router-dom';
+import { RWebShare } from "react-web-share";
 
 const LandingPage = () => {
     return (
@@ -27,21 +28,33 @@ const LandingPage = () => {
                 <motion.div className="landing-buttons"
                     initial={{ x: -50, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1 ,delay:0.75}}
+                    transition={{ duration: 1, delay: 0.75 }}
                 >
-                <Link className='landing-btn' to="/dashboard">Dashboard</Link>
-                <Link className='landing-btn share' to="">Share</Link>
+                    <Link className='landing-btn' to="/dashboard">Dashboard</Link>
+
+                    <RWebShare
+                        data={{
+                            text: "Crypto Dashboard made using React JS in 2022",
+                            url: "https://shiva-crypto-tracker.netlify.app/",
+                            title: "Crypto Dashboard",
+                        }}
+                        onClick={() => console.log("shared successfully!")}
+                    >
+                        {/* <Button text="Share" outlined={true} /> */}
+                        <Link className='landing-btn share' to="">Share</Link>
+                    </RWebShare>
+
                 </motion.div>
             </div>
             <div className="phone-box">
                 <img className='gradient' src={gradient} alt="" />
-                <motion.img className='iphone' src={iphone} alt="" initial={{y:-10}} animate={{y:10}} 
-                transition={{
-                    type:"smooth",
-                    repeatType:"mirror",
-                    duration:2,
-                    repeat: Infinity
-                }} />
+                <motion.img className='iphone' src={iphone} alt="" initial={{ y: -10 }} animate={{ y: 10 }}
+                    transition={{
+                        type: "smooth",
+                        repeatType: "mirror",
+                        duration: 2,
+                        repeat: Infinity
+                    }} />
             </div>
         </div>
     )
