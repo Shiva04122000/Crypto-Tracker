@@ -12,8 +12,49 @@ import WatchListPage from './Pages/watchlist';
 
 function App() {
 
+  var cursor;
+  var cursorPointer;
+
+  useEffect(() => {
+    cursor = document.getElementById("cursor");
+    document.body.addEventListener("mousemove", function (e) {
+      return (
+        (cursor.style.left = e.clientX + "px"),
+        (cursor.style.top = e.clientY + "px")
+      );
+    });
+    cursorPointer = document.getElementById("cursor-pointer");
+    document.body.addEventListener("mousemove", function (e) {
+      return (
+        (cursorPointer.style.left = e.clientX + "px"),
+        (cursorPointer.style.top = e.clientY + "px")
+      );
+    });
+
+    document.body.addEventListener("mousedown", function (e) {
+      return (
+        (cursor.style.height = "0.5rem"),
+        (cursor.style.width = "0.5rem"),
+        (cursorPointer.style.height = "3rem"),
+        (cursorPointer.style.width = "3rem")
+      );
+    });
+
+    document.body.addEventListener("mouseup", function (e) {
+      return (
+        (cursor.style.height = "0.3rem"),
+        (cursor.style.width = "0.3rem"),
+        (cursorPointer.style.height = "2rem"),
+        (cursorPointer.style.width = "2rem")
+      );
+    });
+  }, []);
+
   return (
     <div>
+      <div className="cursor" id="cursor" />
+      <div className="cursor-pointer" id="cursor-pointer" />
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
