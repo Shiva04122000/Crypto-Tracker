@@ -5,8 +5,17 @@ import { ConvertNumbers } from "../../Functions/ConverNumber";
 import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
 import './Dashboard.css';
+import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded";
+import BookmarkRoundedIcon from "@mui/icons-material/BookmarkRounded";
+import IconButton from "@mui/material/IconButton";
+import { addToWatchlist } from "../../Functions/Watchlist";
+import { removeFromWatchlist } from "../../Functions/Watchlist";
 
 function List({ coin, delay }) {
+  const isWatchlist = localStorage.getItem("watchlist")
+    ? localStorage.getItem("watchlist").includes(coin.id)
+    : false;
+  const [isAdded, setIsAdded] = useState(false);
   const [volume, setVolume] = useState("");
 
   useEffect(() => {
@@ -30,7 +39,7 @@ function List({ coin, delay }) {
         <td className="td-name-flex">
           <div className="name-flex ">
             <Tooltip title="Symbol">
-              <p className="coin-symbol name-text">{coin.symbol}-USD</p>
+              <p className="coin-symbol name-text">{coin.symbol}</p>
             </Tooltip>
             <Tooltip title="Name">
               <p className="coin-name name-text">{coin.name}</p>
@@ -40,7 +49,7 @@ function List({ coin, delay }) {
         <td className="td-chip-flex">
           {coin.price_change_percentage_24h > 0 ? (
             <Tooltip title="Percentage Change in 24 Hours">
-              <div className="chip-flex">
+              <div className="list-chip-flex chip-flex">
                 <div className="coin-chip percentage-text">
                   {coin.price_change_percentage_24h.toFixed(2) + " %"}
                 </div>
@@ -49,7 +58,7 @@ function List({ coin, delay }) {
             </Tooltip>
           ) : (
             <Tooltip title="Percentage Change in 24 Hours">
-              <div className="chip-flex">
+              <div className="list-chip-flex chip-flex">
                 <div className="coin-chip chip-red percentage-text">
                   {coin.price_change_percentage_24h.toFixed(2) + " %"}
                 </div>
@@ -88,6 +97,33 @@ function List({ coin, delay }) {
             <p>${volume}</p>
           </Tooltip>
         </td>
+        <td>
+        {isWatchlist || isAdded ? (
+          <div
+            className="bookmark-icon-div"
+            onClick={() => {
+              setIsAdded(false);
+              removeFromWatchlist(coin.id);
+            }}
+          >
+            <IconButton>
+              <BookmarkRoundedIcon className="bookmark-icon" />
+            </IconButton>
+          </div>
+        ) : (
+          <div
+            className="bookmark-icon-div"
+            onClick={() => {
+              setIsAdded(true);
+              addToWatchlist(coin.id);
+            }}
+          >
+            <IconButton>
+              <BookmarkBorderRoundedIcon className="bookmark-icon" />
+            </IconButton>
+          </div>
+        )}
+      </td>
       </motion.tr>
     </a>
   );

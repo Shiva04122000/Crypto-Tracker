@@ -7,9 +7,16 @@
   width: 95%;
   margin: 1rem 2rem;
 }
+.grid-inner{
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+}
 .grid-box {
-  width: 250px;
-    height: 220px;
+  /* width: 250px; */
+  width: 200px;
+    height: 270px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -19,6 +26,9 @@
     border-radius: 0.8rem;
     padding: 1.5rem;
     border: 2px solid var(--darkgrey);
+}
+.grid-a{
+  padding: 0px;
 }
 
 .info-flex {
@@ -69,9 +79,10 @@
 
 .chip-flex {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 2rem;
 }
 
 .icon {
@@ -107,9 +118,10 @@
 }
 
 .volume-text {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-bottom: 0.2rem;
   opacity: 0.8;
+  font-family: system-ui;
 }
 
 .grid-box:hover {
@@ -146,7 +158,7 @@
 
 .list-row td {
   text-align: left !important;
-  width: 18%;
+  /* width: 18%; */
 }
 
 .td-chip-flex {
@@ -258,13 +270,14 @@
     border-radius: 2rem;
     color: var(--green);
     border-width: 1px;
-    font-size: 50%;
+        /* font-size: 52%; */
+        font-size: 1rem;
     margin: 1rem 0;
-    padding: 0.25rem;
+    padding: 0.25rem 0.35rem;
   }
   .list-row {
     padding: 0rem;
-    gap: 0.3rem;
+    gap: 0.5rem;
   }
   .td-name-flex {
     min-width: 0px;
@@ -299,12 +312,12 @@
   .list-row {
     align-items: center;
     display: flex;
-    gap: 1rem;
+    gap: 0rem;
     justify-content: space-between;
     /* padding: 0 1rem; */
     width: 100%;
     padding-right: 1rem;
-    padding-left: 0.5rem;
+    padding-left: 0rem;
   }
 }
 
@@ -312,11 +325,17 @@
   .grid-box {
     width: 100% !important;
   }
+  .list-chip-flex{
+    display: inline;
+  }
+  .percentage-text {
+    width: 46px;
+  }
 }
 
 @media screen and (max-width: 800px) {
   .grid-flex {
     width: 85%;
-    margin: 0px 0px ;
+    margin: 0px 25px ;
   }
 }

@@ -1,22 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Dashboard.css"
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
+import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded";
+import BookmarkRoundedIcon from "@mui/icons-material/BookmarkRounded";
+import IconButton from "@mui/material/IconButton";
+import { addToWatchlist } from "../../Functions/Watchlist";
+import { removeFromWatchlist } from "../../Functions/Watchlist";
 
 const Grid = ({ coin }) => {
+  const isWatchlist = localStorage.getItem("watchlist")
+    ? localStorage.getItem("watchlist").includes(coin.id)
+    : false;
+  const [isAdded, setIsAdded] = useState(false);
   return (
-    <a href={`/coin/${coin.id}`}>
-      <div
-        className={`grid-box ${coin.price_change_percentage_24h < 0 && "grid-box-red"
-          }`}
-      >
+
+    <div className={`grid-box ${coin.price_change_percentage_24h < 0 && "grid-box-red"}`}>
+      <div className="grid-inner">
         <div className="info-flex">
           <img src={coin.image} className="coin-logo" />
           <div className="name-flex">
-            <p className="coin-symbol">{coin.symbol}-USD</p>
+            <p className="coin-symbol">{coin.symbol}</p>
             <p className="coin-name">{coin.name}</p>
           </div>
         </div>
+        {isWatchlist || isAdded ? (
+        <div
+          className="bookmark-icon-div"
+          onClick={() => {
+            setIsAdded(false);
+            removeFromWatchlist(coin.id);
+          }}
+        >
+          <IconButton>
+            <BookmarkRoundedIcon className="bookmark-icon" />
+          </IconButton>
+        </div>
+      ) : (
+        <div
+          className="bookmark-icon-div"
+          onClick={() => {
+            setIsAdded(true);
+            addToWatchlist(coin.id);
+          }}
+        >
+          <IconButton>
+            <BookmarkBorderRoundedIcon className="bookmark-icon" />{" "}
+          </IconButton>
+        </div>
+      )}
+      </div>
+        
+      
+
+      
+
+      <a href={`/coin/${coin.id}`} className="grid-a">
         {coin.price_change_percentage_24h > 0 ? (
           <div className="chip-flex">
             <div className="coin-chip">
@@ -53,8 +92,9 @@ const Grid = ({ coin }) => {
             {coin.market_cap.toLocaleString()}
           </p>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
+
   )
 }
 

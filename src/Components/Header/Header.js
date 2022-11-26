@@ -120,6 +120,7 @@ const Header = () => {
 
         <Link className="link" to={"/"}>Home </Link>
         <Link className="link" to={"/compare"}>Compare </Link>
+        <Link className="link" to={'/watchlist'}>Watchlist</Link>
         <Link to={'/dashboard'}><button className="button">Dashboard</button></Link>
 
       </div>
@@ -142,6 +143,7 @@ const Header = () => {
             /></Link>
             <Link to={'/'}>Home</Link>
             <Link to={'/compare'}>Compare</Link>
+            <Link to={'/watchlist'}>Watchlist</Link>
             <Link to={'/dashboard'}>Dashboard</Link>
           </div>
         </Drawer>

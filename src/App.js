@@ -7,6 +7,7 @@ import Home from './Pages/Home';
 import CoinPage from './Pages/Coin';
 import axios from 'axios';
 import { useEffect, useState } from 'react'
+import WatchListPage from './Pages/watchlist';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/dashboard" element={<DashBoardPage />} />
           <Route path="/coin/:id" element={<CoinPage />} />
           <Route path="/compare" element={<Compare />} />
+          <Route path="/watchlist" element={<WatchListPage />} />
         </Routes>
       </BrowserRouter>
     </div>
