@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashBoardPage from './Pages/DashBoardPage';
@@ -49,6 +48,7 @@ function App() {
       );
     });
   }, []);
+  
 
   return (
     <div>
@@ -64,6 +64,7 @@ function App() {
           <Route path="/watchlist" element={<WatchListPage />} />
         </Routes>
       </BrowserRouter>
+      <p className='copyright' >© {new Date().getFullYear()} Shiva Epili. Made for Learning Purpose.</p>
     </div>
   );
 }

@@ -37,7 +37,7 @@ function WatchListPage() {
   };
 
   return (
-    <div style={{marginTop:"9rem"}}>
+    <div style={{marginTop:"9rem",height:"75vh"}}>
       <Header />
       <div>
         {coins.length > 0 ? (
